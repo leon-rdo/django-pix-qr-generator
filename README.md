@@ -1,0 +1,1 @@
+# Pix QR Code Generator - using Django
