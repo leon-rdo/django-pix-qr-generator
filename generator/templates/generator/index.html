@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-4">Gerador de QR Code de Pix</h1>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <form action="{% url 'generator:qrcode' %}" method="get" class="p-4 border rounded shadow-sm bg-light">
+                <div class="mb-3">
+                    <label for="key_type" class="form-label">Tipo de Chave</label>
+                    <select name="key_type" id="key_type" class="form-select" required>
+                        <option value="cpf">CPF</option>
+                        <option value="cnpj">CNPJ</option>
+                        <option value="phone">Telefone</option>
+                        <option value="email">E-mail</option>
+                        <option value="random">Chave Aleatória</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="key" class="form-label">Chave</label>
+                    <input type="text" name="chavepix" id="key" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nome do Beneficiário</label>
+                    <input type="text" name="nome" id="name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Valor</label>
+                    <input type="text" name="valor" id="amount" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">Cidade</label>
+                    <input type="text" name="cidade" id="city" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="txtId" class="form-label">Descrição</label>
+                    <input type="text" name="txtId" id="txtId" class="form-control">
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Gerar QR Code</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

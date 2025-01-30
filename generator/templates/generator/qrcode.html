@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center text-primary">QR Code do Pix</h1>
+            <p class="text-center text-muted">Escaneie o QR Code abaixo para pagar.</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        {% if qr_code_base64 %}
+        <div class="col-auto">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <img src="data:image/png;base64,{{ qr_code_base64 }}" alt="QR Code" class="img-fluid border rounded">
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <p class="text-center text-danger">QR Code não disponível.</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-auto">
+            <a href="{% url 'generator:index' %}" class="btn btn-primary">Gerar outro QR Code</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,4 +1,7 @@
 asgiref==3.8.1
+crcmod==1.7
 Django==5.1.5
+pillow==11.1.0
 python-dotenv==1.0.1
+qrcode==8.0
 sqlparse==0.5.3
