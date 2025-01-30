@@ -14,7 +14,6 @@ class Payload():
         self.txtId = txtId
         self.diretorioQrCode = diretorio
 
-        # Formata o valor para duas casas decimais
         self.valor_float = float(self.valor)
         self.valor_str = f"{self.valor_float:.2f}"
         self.valor_tam = len(self.valor_str)
@@ -24,7 +23,6 @@ class Payload():
         self.cidade_tam = len(self.cidade)
         self.txtId_tam = len(self.txtId)
 
-        # Merchant Account em minúsculas
         self.merchantAccount_tam = f'0014br.gov.bcb.pix01{self.chavepix_tam:02}{self.chavepix}'
         self.transactionAmount_tam = f'{self.valor_tam:02}{self.valor_str}'
 
@@ -49,7 +47,6 @@ class Payload():
         self.gerarCrc16(self.payload)
 
     def gerarCrc16(self, payload):
-        # Usa o polinômio correto 0x11021 (CRC-16/CCITT-FALSE)
         crc16 = crcmod.mkCrcFun(poly=0x11021, initCrc=0xFFFF, rev=False, xorOut=0x0000)
         self.crc16Code = hex(crc16(payload.encode('utf-8')))
         self.crc16Code_formatado = self.crc16Code[2:].upper().zfill(4)
