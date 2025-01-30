@@ -129,8 +129,13 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = os.getenv('STATIC_URL')
-STATIC_ROOT = os.getenv('STATIC_ROOT')
+STATIC_URL = os.getenv('STATIC_URL', '/static/')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+] # Diretórios de arquivos estáticos para desenvolvimento
+
+STATIC_ROOT = os.getenv('STATIC_ROOT', os.path.join(BASE_DIR, 'staticfiles')) # Diretório de arquivos para produção
+
 
 # Media files (Images, Videos, etc)
 
